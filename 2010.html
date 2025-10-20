@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>💖 Chúc Bae 20/10 💖</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at bottom, #ffe0f0, #ffb6c1, #f9a8d4);
+      font-family: 'Comic Sans MS', cursive;
+      color: #ff4081;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Hiệu ứng sao rơi */
+    .star {
+      position: absolute;
+      color: #fff;
+      font-size: 12px;
+      opacity: 0.8;
+      animation: fall 5s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Trái tim xoay */
+    .hearts {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: spin 10s linear infinite;
+      z-index: 2;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 60px;
+      transform-origin: center;
+    }
+
+    .heart.blue { color: #00bcd4; transform: rotate(0deg) translateY(-80px); }
+    .heart.orange { color: #ff9800; transform: rotate(180deg) translateY(-80px); }
+
+    /* Dòng chữ xoay quanh trái tim */
+    .circle-text {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      animation: rotateText 270s linear infinite; /* xoay chậm hơn */
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    @keyframes rotateText {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .circle-text span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 0 140px;
+    }
+
+    /* Lời chúc */
+    .message {
+      margin-top: 220px;
+      font-size: 22px;
+      color: #d63384;
+      text-shadow: 0 0 10px white;
+      animation: glow 2s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 20px #ff80bf, 0 0 30px #ff66cc; }
+    }
+
+    /* Hai gấu trúc ở góc dưới */
+    .pandas {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .pandas img {
+      width: 80px;
+      height: 80px;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    .pandas img:nth-child(2) {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <div class="heart blue">💙</div>
+    <div class="heart orange">🧡</div>
+    <div class="circle-text" id="circleText"></div>
+  </div>
+
+  <div class="message">✨ Chúc Thảo Nguyên 20/10 vui vẻ, 8386 nhé!!! 💐 ✨</div>
+
+  <div class="pandas">
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="panda1">
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616554.png" alt="panda2">
+  </div>
+
+  <script>
+    // Tạo hiệu ứng chữ xoay quanh trái tim
+    const text = "chúc bae 20/10 vui vẻ, luôn xinh đẹp, hạnh phúc và tích cực nha. anh yêu em 💖 ";
+    const circle = document.getElementById("circleText");
+    for (let i = 0; i < text.length; i++) {
+      const span = document.createElement("span");
+      span.textContent = text[i];
+      span.style.transform = `rotate(${(i * 360) / text.length}deg)`;
+      circle.appendChild(span);
+    }
+
+    // Hiệu ứng sao rơi
+    function createStar() {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.innerHTML = "✨";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.fontSize = Math.random() * 12 + 8 + "px";
+      star.style.animationDuration = 3 + Math.random() * 3 + "s";
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 6000);
+    }
+    setInterval(createStar, 180);
+  </script>
+</body>
+</html>
